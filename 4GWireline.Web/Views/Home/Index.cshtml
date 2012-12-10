@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        var images = ['/Images/IMG_0048.jpg', '/Images/IMG_0049.jpg','/Images/MDD-Screenshot2.png','/Images/RackMount_001.jpg','/Images/RackMount_002.jpg'];
+        var index = 0;
+
+        var rotateImage = function () {
+            $('#photoRotator').fadeOut('fast', function () {
+                $(this).attr('src', images[index]);
+                $(this).fadeIn('fast', function () {
+                    if (index == images.length - 1) {
+                        index = 0;
+                    }
+                    else {
+                        index++;
+                    }
+                });
+            });
+        };
+
+        $(document).ready(function () {
+            setInterval(rotateImage, 5000)
+        });
+    </script>
+    
+}
+
+<div style="width:300px; height:300px;">
+    <img style="height:100%" id="photoRotator" src="~/Images/RackMount_002.jpg" />
+</div>
+
+<img style="width:0px; height:0px;" src="~/Images/IMG_0048.jpg" />
+<img style="width:0px; height:0px;" src="~/Images/IMG_0049.jpg" />
+<img style="width:0px; height:0px;" src="~/Images/MDD-Screenshot2.png" />
+<img style="width:0px; height:0px;" src="~/Images/RackMount_001.jpg" />
+<img style="width:0px; height:0px;" src="~/Images/RackMount_002.jpg" />
+
+
